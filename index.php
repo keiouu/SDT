@@ -16,4 +16,10 @@ if (strlen($page) <= 0 || substr($page, -1)) {
 }
 
 // See if this page is cached
-print $page;
+$file = realpath("./site-cache") . $page;
+if (file_exists($file)) {
+	print file_get_contents($file);
+} else {
+	// Let the engine take care of this.
+	require(realpath("./engine/bootstrap.php"));
+}

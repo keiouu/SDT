@@ -1,4 +1,4 @@
 <?php
 /**
- * This file is called by every template, it loads up the templating engine
+ * This file is called by index.php is it cannot find a cached page
  */
