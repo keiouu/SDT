@@ -16,18 +16,13 @@ class PageLoader
 	public function __construct($path, $config) {
 		$this->_path = $path;
 		$this->_config = $config;
-		
-		$this->loadSnippets();
 	}
 	
 	/**
-	 * Load the theme
+	 * Process the page
+	 * This involves returning our content
 	 */
-	
-	/**
-	 * Load snippets for this template's theme
-	 */
-	private function loadSnippets() {
-		$theme = $this->_config['theme'];
+	public function process() {
+		return file_get_contents(SITE_PATH . $this->_path);
 	}
 }

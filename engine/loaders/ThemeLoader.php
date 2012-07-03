@@ -24,4 +24,16 @@ class ThemeLoader
 	private function loadSnippets() {
 		$theme = $this->_config['theme'];
 	}
+	
+	/**
+	 * Process the page
+	 * This involves going through all snippets and applying them to the page if necessary
+	 */
+	public function process($page) {
+		
+		// Replace media tag with the required media
+		$page = str_replace("{{media}}", "", $page);
+		
+		return $page;
+	}
 }

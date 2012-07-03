@@ -6,14 +6,16 @@
 class RenderManager
 {
 	private $_page, $_template, $_theme;
+	
 	/**
 	 * Create a RenderManager
 	 *
-	 * @param string $path The filename of the page
-	 * @param Array $config The site config
+	 * @param PageLoader $page The PageLoader object for this process
+	 * @param TemplateLoader $template The TemplateLoader object for this process
+	 * @param ThemeLoader $theme The ThemeLoader object for this process
 	 */
 	public function __construct($page, $template, $theme) {
-		$this->_page= $page;
+		$this->_page = $page;
 		$this->_template = $template;
 		$this->_theme = $theme;
 	}
@@ -22,6 +24,9 @@ class RenderManager
 	 * Mix & Render
 	 */
 	public function render() {
-		
+		$page = $this->_page->process();
+		$page = $this->_template->process($page);
+		$page = $this->_theme->process($page);
+		return $page;
 	}
 }

@@ -24,4 +24,4 @@ $page = new PageLoader($page, $config);
 // Render the page
 require_once(ENGINE_PATH . "core/RenderManager.php");
 $engine = new RenderManager($page, $template, $theme);
-$engine->render();
+print $engine->render();

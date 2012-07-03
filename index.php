@@ -4,6 +4,9 @@
  */
 
 define("BASE_PATH", __DIR__ . "/");
+define("THEME_PATH", __DIR__ . "/themes/");
+define("SITE_PATH", __DIR__ . "/site/");
+define("SITE_CACHE_PATH", __DIR__ . "/site-cache/");
 
 // Make sure we have a page!
 if (!isset($_GET['sdt-page'])) {
@@ -18,7 +21,7 @@ if (strlen($page) <= 0 || substr($page, -1)) {
 }
 
 // See if this page is cached
-$file = realpath("./site-cache") . $page;
+$file = SITE_CACHE_PATH . $page;
 if (file_exists($file)) {
 	// Print the contents
 	print file_get_contents($file);
