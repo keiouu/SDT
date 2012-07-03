@@ -3,6 +3,8 @@
  * This file is passed a desired page, it then serves up that page by any means necessary!
  */
 
+define("BASE_PATH", __DIR__ . "/");
+
 // Make sure we have a page!
 if (!isset($_GET['sdt-page'])) {
 	$page = "/403.html";
@@ -18,8 +20,9 @@ if (strlen($page) <= 0 || substr($page, -1)) {
 // See if this page is cached
 $file = realpath("./site-cache") . $page;
 if (file_exists($file)) {
+	// Print the contents
 	print file_get_contents($file);
 } else {
 	// Let the engine take care of this.
-	require(realpath("./engine/bootstrap.php"));
+	require(BASE_PATH . "engine/bootstrap.php");
 }
