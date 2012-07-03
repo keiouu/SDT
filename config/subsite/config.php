@@ -5,5 +5,6 @@
 
 $config = array(
 	"theme" => "default",
+	"template" => "default",
 	"sitename" => "Subsite"
 );
