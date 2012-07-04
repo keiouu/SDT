@@ -4,7 +4,7 @@
  */
 
 $config = array(
-	"theme" => "default",
+	"theme" => "Default",
 	"template" => "default",
 	"sitename" => "Example Site"
 );

@@ -49,6 +49,14 @@ class ThemeLoader
 	 * @return string Returns the new page
 	 */
 	public function process($page) {
+		$theme = $this->_config['theme'];
+		
+		// Load the theme
+		include($this->_config['theme-path'] . "theme.php");
+		$obj_name = $theme . "Theme";
+		$obj = new $obj_name();
+		$obj->media($this->_media);
+		
 		// Parse Snippets
 		$page = $this->renderSnippets($page);
 		
