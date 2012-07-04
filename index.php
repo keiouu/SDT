@@ -4,6 +4,7 @@
  */
 
 define("BASE_PATH", __DIR__ . "/");
+define("ASSETS_PATH", __DIR__ . "/assets/");
 define("THEME_PATH", __DIR__ . "/themes/");
 define("SITE_PATH", __DIR__ . "/site/");
 define("SITE_CACHE_PATH", __DIR__ . "/site-cache/");

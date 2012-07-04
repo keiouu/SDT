@@ -3,6 +3,8 @@
  * The MediaManager holds a record of all snippet and tool media for a page load event
  */
 
+require(BASE_PATH . 'lib/lessc.inc.php');
+
 class MediaManager
 {
 	private $_media = array();
@@ -38,6 +40,15 @@ class MediaManager
 			}
 			if (substr($file, -2) == "js") {
 				$html .= '<script src="'.$file.'"></script>';
+				continue;
+			}
+			if (substr($file, -4) == "less") {
+				// Parse
+				$less = new lessc(BASE_PATH . $file);
+				$file = ASSETS_PATH . "cache/" . md5($file) . ".css";
+				file_put_contents($file, $less->parse());
+				
+				$html .= '<link href="'.Util::sitePathToWebPath($file).'" media="screen" rel="stylesheet" />';
 				continue;
 			}
 		}
