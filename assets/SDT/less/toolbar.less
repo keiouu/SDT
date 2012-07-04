@@ -1,8 +1,22 @@
-@primaryColour: #c0c0c0;
+@primaryColour: #dedede;
+@borderColour: #c0c0c0;
 
-#sdt-toolbar {
-  background-color: @primaryColour;
-  position: fixed;
-  top: 0;
-  left: 0;
+body {
+  margin-top: 40px;
+
+  #sdt-toolbar {
+    background-color: @primaryColour;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid @borderColour;
+    
+    h1 {
+      margin: 0;
+      padding: 5px;
+      font-size: 15px;
+    }
+  }
 }

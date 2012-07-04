@@ -22,9 +22,7 @@ class ToolbarTool extends Tool
 	 * @return string The new page
 	 */
 	public function render($page, $config) {
-		$html = '<div id="sdt-toolbar">
-			Site Development Tool
-		</div>';
+		$html = View::load(ASSETS_PATH . "SDT/html/toolbar.php");
 		return str_replace("<body>", $html, $page);
 	}
 }
