@@ -11,6 +11,7 @@ class ToolbarTool extends Tool
 	 * @param MediaManager $media A MediaManager object
 	 */
 	public function media($media) {
+		$media->addFile(ASSETS_PATH . "SDT/less/core.less");
 		$media->addFile(ASSETS_PATH . "SDT/less/toolbar.less");
 		$media->addFile(ASSETS_PATH . "common/js/jquery-1.7.2.js");
 		$media->addFile(ASSETS_PATH . "SDT/js/core.js");
