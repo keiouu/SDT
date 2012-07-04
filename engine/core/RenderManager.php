@@ -35,7 +35,7 @@ class RenderManager
 		
 		
 		// Replace media tag with the required media
-		$page = str_replace("{{media}}", $this->_media->__toString(), $page);
+		$page = str_replace("{media}", $this->_media->__toString(), $page);
 		
 		return $page;
 	}

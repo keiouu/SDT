@@ -27,9 +27,11 @@ class ToolLoader
 	private function renderTools($page) {
 		$theme = $this->_config['theme'];
 		
-		$toolbar = new ToolbarTool();
-		$toolbar->media($this->_media);
-		$page = $toolbar->render($page, $this->_config);
+		$tools = array( new ToolbarTool(), new PropertiesTool() );
+		foreach ($tools as $tool) {
+			$tool->media($this->_media);
+			$page = $tool->render($page, $this->_config);
+		}
 		
 		return $page;
 	}

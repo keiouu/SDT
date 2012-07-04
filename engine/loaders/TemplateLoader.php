@@ -55,10 +55,10 @@ class TemplateLoader
 		$template = $this->getTemplate();
 		
 		// Replace title tag with the first h1 in the page
-		$template = str_replace("{{title}}", $this->getTitle($page), $template);
+		$template = str_replace("{title}", $this->getTitle($page), $template);
 		
 		// Replace body tag with the page
-		$template = str_replace("{{body}}", $page, $template);
+		$template = str_replace("{body}", $page, $template);
 		
 		return $template;
 	}
