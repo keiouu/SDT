@@ -12,6 +12,9 @@ class ToolbarTool extends Tool
 	 */
 	public function media($media) {
 		$media->addFile(ASSETS_PATH . "SDT/less/toolbar.less");
+		$media->addFile(ASSETS_PATH . "common/js/jquery-1.7.2.js");
+		$media->addFile(ASSETS_PATH . "SDT/js/core.js");
+		$media->addFile(ASSETS_PATH . "SDT/js/toolbar.js");
 	}
 	
 	/**
@@ -23,6 +26,6 @@ class ToolbarTool extends Tool
 	 */
 	public function render($page, $config) {
 		$html = View::load(ASSETS_PATH . "SDT/html/toolbar.php");
-		return str_replace("<body>", $html, $page);
+		return str_replace("<body>", "<body>" . $html, $page);
 	}
 }

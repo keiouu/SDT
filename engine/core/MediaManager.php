@@ -35,11 +35,11 @@ class MediaManager
 		
 		foreach ($this->_media as $file) {
 			if (substr($file, -3) == "css") {
-				$html .= '<link href="'.$file.'" media="screen" rel="stylesheet" />';
+				$html .= '<link href="'.Util::pathToWebPath($file).'" media="screen" rel="stylesheet" />';
 				continue;
 			}
 			if (substr($file, -2) == "js") {
-				$html .= '<script src="'.$file.'"></script>';
+				$html .= '<script src="'.Util::pathToWebPath($file).'"></script>';
 				continue;
 			}
 			if (substr($file, -4) == "less") {

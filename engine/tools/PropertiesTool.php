@@ -23,6 +23,6 @@ class PropertiesTool extends Tool
 	 */
 	public function render($page, $config) {
 		$html = View::load(ASSETS_PATH . "SDT/html/properties.php");
-		return str_replace("{PropertiesPanel}", $html, $page);
+		return str_replace("<body>", "<body>" . $html, $page);
 	}
 }
