@@ -32,10 +32,24 @@ class ThemeLoader
 		foreach ($matches as $match) {
 			$snippet = $match[2] . "Snippet";
 			$data = $match[3];
+			
+			// Create the snippet object, allow it to add media if it wants too
 			$snippet_object = new $snippet();
 			$snippet_object->media($this->_media);
-			$output = $snippet_object->render($page, $this->_config, json_decode($data));
-			$page = str_replace("<" . $snippet . ">" . $data . "</" . $snippet . ">", $output, $page);
+			$snippet_data = json_decode($data);
+			$snippet_data_array = json_decode($data, true);
+			
+			// SDT - Snippet span tag wrapper
+			$sdt_wrapper = '<span class="sdt-snippet" ';
+			foreach ($snippet_data_array as $name => $val) {
+				if (!is_array($val))
+					$sdt_wrapper .= "data-" . $name . '="'.$val.'" ';
+			}
+			$sdt_wrapper .= '>';
+			
+			// Get the Snippet HTML and replace in to page
+			$output = $snippet_object->render($page, $this->_config, $snippet_data);
+			$page = str_replace("<" . $snippet . ">" . $data . "</" . $snippet . ">", $sdt_wrapper . $output . '</span>', $page);
 		}
 		
 		return $page;
