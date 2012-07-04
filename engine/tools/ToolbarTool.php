@@ -6,6 +6,15 @@
 class ToolbarTool extends Tool
 {
 	/**
+	 * Add any media files this Snippet uses to a MediaManager
+	 * 
+	 * @param MediaManager $media A MediaManager object
+	 */
+	public function media($media) {
+		$media->addFile(ASSETS_PATH . "SDT/less/toolbar.less");
+	}
+	
+	/**
 	 * Render this tool
 	 * 
 	 * @param string $page The current page
@@ -13,9 +22,9 @@ class ToolbarTool extends Tool
 	 * @return string The new page
 	 */
 	public function render($page, $config) {
-		
-		return '<div style="position: fixed; top: 0; left: 0;">
+		$html = '<div id="sdt-toolbar">
 			Site Development Tool
 		</div>';
+		return str_replace("<body>", $html, $page);
 	}
 }

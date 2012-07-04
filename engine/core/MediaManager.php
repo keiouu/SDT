@@ -44,11 +44,11 @@ class MediaManager
 			}
 			if (substr($file, -4) == "less") {
 				// Parse
-				$less = new lessc(BASE_PATH . $file);
+				$less = new lessc($file);
 				$file = ASSETS_PATH . "cache/" . md5($file) . ".css";
 				file_put_contents($file, $less->parse());
 				
-				$html .= '<link href="'.Util::sitePathToWebPath($file).'" media="screen" rel="stylesheet" />';
+				$html .= '<link href="'.Util::pathToWebPath($file).'" media="screen" rel="stylesheet" />';
 				continue;
 			}
 		}

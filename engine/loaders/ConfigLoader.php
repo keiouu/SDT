@@ -27,7 +27,7 @@ class ConfigLoader
 		
 		$config = isset($config) ? $config : array();
 		
-		$config['page-path'] = Util::sitePathToWebPath(SITE_PATH . $path);
+		$config['page-path'] = Util::pathToWebPath(SITE_PATH . $path);
 		
 		return $config;
 	}

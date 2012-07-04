@@ -11,7 +11,7 @@ class ImageSnippet extends Snippet
 	 * @param string $page The current page
 	 * @param Array $config The page's config
 	 * @param Array $params The snippet parameters
-	 * @return string The new page
+	 * @return string The html for this snippet
 	 */
 	public function render($page, $config, $params) {
 		$src = dirname($config['page-path']) . "/" . $params->src;
