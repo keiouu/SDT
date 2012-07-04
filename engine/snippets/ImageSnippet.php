@@ -14,7 +14,7 @@ class ImageSnippet extends Snippet
 	 * @return string The html for this snippet
 	 */
 	public function render($page, $config, $params) {
-		$src = dirname($config['page-path']) . "/" . $params->src;
-		return '<img src="' . $src . '" alt="' . $params->alt . '" />';
+		$src = dirname($config['page-url']) . "/" . $params->src;
+		return View::load($config['theme-path'] . "snippets/Image/Image.php", array("src" => $src , "alt" => $params->alt));
 	}
 }

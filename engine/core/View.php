@@ -15,6 +15,10 @@ class View
 		ob_start();
 		extract($params);
 		include($filename);
-		return ob_get_clean();
+		$html = ob_get_clean();
+		foreach ($params as $name => $val) {
+			$html = str_replace("{".$name."}", $val, $html);
+		}
+		return $html;
 	}
 }
