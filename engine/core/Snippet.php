@@ -6,12 +6,12 @@
 abstract class Snippet
 {
 	/**
-	 * Returns any media files this Snippet uses
+	 * Add any media files this Snippet uses to a MediaManager
 	 * 
-	 * @return Array An array of media this snippet uses
+	 * @param MediaManager $media A MediaManager object
 	 */
-	public function media() {
-		return array();
+	public function media($media) {
+		// Blank
 	}
 	
 	/**

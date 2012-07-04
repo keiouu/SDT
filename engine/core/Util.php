@@ -7,6 +7,8 @@ class Util
 {	
 	public static function sitePathToWebPath($path) {
 		$base = dirname($_SERVER['PHP_SELF']);
-		return str_replace(SITE_PATH, $base . "/site/", $path);
+		if (substr($base, -1) !== "/")
+			$base = $base . "/";
+		return str_replace(SITE_PATH, $base . "site/", $path);
 	}
 }

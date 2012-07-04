@@ -5,15 +5,17 @@
 
 class ThemeLoader
 {
-	private $_config, $_snippets;
+	private $_config, $_media, $_snippets;
 	
 	/**
 	 * Create a ThemeLoader
 	 *
 	 * @param Array $config The site config
+	 * @param MediaManager $media A MediaManager object
 	 */
-	public function __construct($config) {
+	public function __construct($config, $media) {
 		$this->_config = $config;
+		$this->_media = $media;
 	}
 	
 	/**
@@ -31,6 +33,7 @@ class ThemeLoader
 			$snippet = $match[2] . "Snippet";
 			$data = $match[3];
 			$snippet_object = new $snippet();
+			$snippet_object->media($this->_media);
 			$output = $snippet_object->render($page, $this->_config, json_decode($data));
 			$page = str_replace("<" . $snippet . ">" . $data . "</" . $snippet . ">", $output, $page);
 		}

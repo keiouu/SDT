@@ -5,15 +5,17 @@
 
 class ToolLoader
 {
-	private $_config;
+	private $_config, $_media;
 	
 	/**
 	 * Create a ToolLoader
 	 *
 	 * @param Array $config The site config
+	 * @param MediaManager $media A MediaManager object
 	 */
-	public function __construct($config) {
+	public function __construct($config, $media) {
 		$this->_config = $config;
+		$this->_media = $media;
 	}
 	
 	/**

@@ -10,7 +10,7 @@ define("SITE_CACHE_PATH", __DIR__ . "/site-cache/");
 
 // Make sure we have a page!
 if (!isset($_GET['sdt-page'])) {
-	$page = "/403.html";
+	$page = "/index.html";
 } else {
 	$page = $_GET['sdt-page'];
 }
