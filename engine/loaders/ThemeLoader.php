@@ -14,22 +14,40 @@ class ThemeLoader
 	 */
 	public function __construct($config) {
 		$this->_config = $config;
-		
-		$this->loadSnippets();
 	}
 	
 	/**
-	 * Load snippets for this template's theme
+	 * Render snippets for this page
+	 * 
+	 * @param string $page The current page
+	 * @return string Returns the new page
 	 */
-	private function loadSnippets() {
+	private function renderSnippets($page) {
 		$theme = $this->_config['theme'];
+		
+		// Go through all snippet tags
+		preg_match_all('/(\<(\w+)Snippet\b[^>]*\>)(.*?)(\<\/\\2Snippet\>)/is', $page, $matches, PREG_SET_ORDER);
+		foreach ($matches as $match) {
+			$snippet = $match[2] . "Snippet";
+			$data = $match[3];
+			$snippet_object = new $snippet();
+			$output = $snippet_object->render($page, $this->_config, json_decode($data));
+			$page = str_replace("<" . $snippet . ">" . $data . "</" . $snippet . ">", $output, $page);
+		}
+		
+		return $page;
 	}
 	
 	/**
 	 * Process the page
 	 * This involves going through all snippets and applying them to the page if necessary
+	 * 
+	 * @param string $page The current page
+	 * @return string Returns the new page
 	 */
 	public function process($page) {
+		// Parse Snippets
+		$page = $this->renderSnippets($page);
 		
 		// Replace media tag with the required media
 		$page = str_replace("{{media}}", "", $page);

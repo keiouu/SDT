@@ -47,6 +47,9 @@ class TemplateLoader
 	/**
 	 * Process the page
 	 * This involves adding in the template and mixing the current page in
+	 * 
+	 * @param string $page The current page
+	 * @return string Returns the new page
 	 */
 	public function process($page) {
 		$template = $this->getTemplate();

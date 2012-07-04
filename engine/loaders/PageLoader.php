@@ -21,6 +21,8 @@ class PageLoader
 	/**
 	 * Process the page
 	 * This involves returning our content
+	 * 
+	 * @return string Returns the page
 	 */
 	public function process() {
 		return file_get_contents(SITE_PATH . $this->_path);
