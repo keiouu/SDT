@@ -14,6 +14,7 @@ class ImageSnippet extends Snippet
 	 * @return string The new page
 	 */
 	public function render($page, $config, $params) {
-		return '<img src="' . $params->src . '" alt="' . $params->alt . '" />';
+		$src = dirname($config['page-path']) . "/" . $params->src;
+		return '<img src="' . $src . '" alt="' . $params->alt . '" />';
 	}
 }

@@ -16,7 +16,7 @@ if (!isset($_GET['sdt-page'])) {
 }
 
 // If this URL doesnt have a file name, add index.html
-if (strlen($page) <= 0 || substr($page, -1)) {
+if (strlen($page) <= 0 || substr($page, -1) == "/") {
 	$page = $page . "index.html";
 }
 

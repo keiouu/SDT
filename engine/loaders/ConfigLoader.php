@@ -25,6 +25,10 @@ class ConfigLoader
 		// Load and return the config file
 		require_once($config_path . "/config.php");
 		
-		return isset($config) ? $config : array();
+		$config = isset($config) ? $config : array();
+		
+		$config['page-path'] = Util::sitePathToWebPath(SITE_PATH . $path);
+		
+		return $config;
 	}
 }
