@@ -12,5 +12,9 @@ spl_autoload_register(function ($class) {
     	include_once(ENGINE_PATH . 'snippets/' . $class . '.php');
 		return;
 	}
+	if (strpos($class, "Tool") > 0) {
+    	include_once(ENGINE_PATH . 'tools/' . $class . '.php');
+		return;
+	}
     include_once(ENGINE_PATH . 'core/' . $class . '.php');
 });

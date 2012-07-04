@@ -49,9 +49,6 @@ class ThemeLoader
 		// Parse Snippets
 		$page = $this->renderSnippets($page);
 		
-		// Replace media tag with the required media
-		$page = str_replace("{{media}}", "", $page);
-		
 		return $page;
 	}
 }

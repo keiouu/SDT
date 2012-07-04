@@ -18,6 +18,9 @@ $template = new TemplateLoader($config);
 // Load the template engine
 $page = new PageLoader($page, $config);
 
+// Load the tools
+$tools = new ToolLoader($config);
+
 // Render the page
-$engine = new RenderManager($page, $template, $theme);
+$engine = new RenderManager($page, $template, $theme, $tools);
 print $engine->render();

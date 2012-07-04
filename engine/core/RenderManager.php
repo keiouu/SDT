@@ -5,7 +5,7 @@
 
 class RenderManager
 {
-	private $_page, $_template, $_theme;
+	private $_page, $_template, $_theme, $_tools;
 	
 	/**
 	 * Create a RenderManager
@@ -13,11 +13,13 @@ class RenderManager
 	 * @param PageLoader $page The PageLoader object for this process
 	 * @param TemplateLoader $template The TemplateLoader object for this process
 	 * @param ThemeLoader $theme The ThemeLoader object for this process
+	 * @param ToolLoader $tools The ToolLoader object for this process
 	 */
-	public function __construct($page, $template, $theme) {
+	public function __construct($page, $template, $theme, $tools) {
 		$this->_page = $page;
 		$this->_template = $template;
 		$this->_theme = $theme;
+		$this->_tools = $tools;
 	}
 	
 	/**
@@ -27,6 +29,12 @@ class RenderManager
 		$page = $this->_page->process();
 		$page = $this->_template->process($page);
 		$page = $this->_theme->process($page);
+		$page = $this->_tools->process($page);
+		
+		
+		// Replace media tag with the required media (from mediamanager)
+		//$page = str_replace("{{media}}", "", $page);
+		
 		return $page;
 	}
 }
