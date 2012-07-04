@@ -29,6 +29,19 @@ class MediaManager
 	 * @return string The required HTML for items in this manager
 	 */
 	public function __toString() {
-		return "";
+		$html = "";
+		
+		foreach ($this->_media as $file) {
+			if (substr($file, -3) == "css") {
+				$html .= '<link href="'.$file.'" media="screen" rel="stylesheet" />';
+				continue;
+			}
+			if (substr($file, -2) == "js") {
+				$html .= '<script src="'.$file.'"></script>';
+				continue;
+			}
+		}
+		
+		return $html;
 	}
 }
